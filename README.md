@@ -15,9 +15,10 @@ pip install -r requirements.txt
 
 #### Run the script
 ```bash
-python run.py --img <IMG_DIR>
+python run.py --img <IMG_DIR> --preprocess 
 ```
 Replace <IMG_DIR> with the path to a single image
+Specify ```--preprocess``` to preprocess the input image
 
 #### Example
 ```bash

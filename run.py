@@ -12,20 +12,28 @@ from doctr.io.reader import DocumentFile, OCR_OUTPUT_DIR
 if __name__ == '__main__':
   argparser = argparse.ArgumentParser(description=__doc__)
   argparser.add_argument('--img', type=str, help='Path of image to be scanned')
+  argparser.add_argument('--preprocess', action='store_true', help='Whether to preprocess the image')
   args = argparser.parse_args()
 
-  ##### Preprocessing #####
-  print('\nPreprocessing...')
   img_path = args.img
+  PREPROCESS = args.preprocess
   img_name = os.path.splitext(os.path.basename(img_path))[0]
-  scanner = DocScanner()
-  scanner.scan(img_path)
-  scanner.visualize()
+
+  ##### Preprocessing #####
+  if PREPROCESS:
+    print('\nPreprocessing...')
+    scanner = DocScanner()
+    scanner.scan(img_path)
+    scanner.visualize()
 
   ##### Text detection & recognition #####
   print('\nOCR text detection & recognition...')
   model = ocr_predictor('db_resnet50', 'crnn_mobilenet_v3_large', pretrained=True, assume_straight_pages=True)
-  doc = DocumentFile.from_images(os.path.join(DOCSCAN_OUTPUT_DIR, os.path.basename(img_path)))
+
+  if PREPROCESS:
+    doc = DocumentFile.from_images(os.path.join(DOCSCAN_OUTPUT_DIR, os.path.basename(img_path)))
+  else:
+    doc = DocumentFile.from_images(img_path)
   result = model(doc)
   result.show()
   # JSON result
@@ -35,6 +43,7 @@ if __name__ == '__main__':
     os.makedirs(JSON_DIR)
   with open(os.path.join(JSON_DIR, img_name + '.json'), 'w') as f:
     json.dump(json_result, f)
+
 
   ##### Synthesize text detection & recognition results #####
   print('\nSynthesizing...')
