@@ -22,5 +22,7 @@ Specify ```--preprocess``` to preprocess the input image
 
 #### Example
 ```bash
-python run.py --img input_img/receipt.jpg
+python run.py --img input_img/receipt.jpg --preprocess
 ```
+
+#### Results

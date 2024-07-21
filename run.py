@@ -28,7 +28,7 @@ if __name__ == '__main__':
 
   ##### Text detection & recognition #####
   print('\nOCR text detection & recognition...')
-  model = ocr_predictor('db_resnet50', 'crnn_mobilenet_v3_large', pretrained=True, assume_straight_pages=True)
+  model = ocr_predictor('db_mobilenet_v3_large', 'crnn_mobilenet_v3_large', pretrained=True, assume_straight_pages=True)
 
   if PREPROCESS:
     doc = DocumentFile.from_images(os.path.join(DOCSCAN_OUTPUT_DIR, os.path.basename(img_path)))
@@ -43,7 +43,6 @@ if __name__ == '__main__':
     os.makedirs(JSON_DIR)
   with open(os.path.join(JSON_DIR, img_name + '.json'), 'w') as f:
     json.dump(json_result, f)
-
 
   ##### Synthesize text detection & recognition results #####
   print('\nSynthesizing...')
