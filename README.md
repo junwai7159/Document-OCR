@@ -1,5 +1,5 @@
 # Document scanner & OCR
-Project - SJTU ICE4309 - Image Processing & Content Analysis
+SJTU ICE4309 - Image Processing & Content Analysis
 
 ### Usage
 #### Create and activate new conda environment
