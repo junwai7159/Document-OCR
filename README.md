@@ -10,7 +10,7 @@ The model architecture of Document OCR is shown below:
 - The **text recognition** module uses the **CRNN** model with **MobileNetV3** as the backbone network.
 
 ## Getting Started
-To get started with your project, follow the steps below to set up your environment, install the necessary dependencies, and run the script.
+To get started with your project, follow the steps below to set up your environment, install the necessary dependencies.
 #### Create and activate new conda environment
 ```bash
 conda create -n ocr python=3.9
@@ -22,6 +22,7 @@ conda activate ocr
 pip install -r requirements.txt
 ```
 
+## Usage
 #### Run the script
 ```bash
 python run.py --img <IMG_DIR> --preprocess 
@@ -32,7 +33,5 @@ Replace `<IMG_DIR>` with the path to a single image. Specify `--preprocess` to p
 ```bash
 python run.py --img input_img/receipt.jpg --preprocess
 ```
-
-## Usage
 
 ## Acknowledgements
