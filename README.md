@@ -5,6 +5,10 @@ This project is part of the SJTU ICE4309 - Image Processing & Content Analysis c
 ## Features
 The model architecture of Document OCR is shown below: 
 
+<div style="text-align: center;">
+  <img src="document_ocr.jpg" alt="Model Architecture" width="50%">
+</div>
+
 - The images undergo **preprocessing**, including **edge detection, contour detection, perspective transformation and binarization** to further enhance the image.
 - The **text detection** module uses the **DBNet** model with **MobileNetV3** as the backbone network.
 - The **text recognition** module uses the **CRNN** model with **MobileNetV3** as the backbone network.
